@@ -1,0 +1,44 @@
+2.- NUMERO DE VENTAS DE CADA PRODUCTO ORDENADO DE MAS  A MENOS
+
+select COUNT(*) as Total, p.nombre 
+from ventas v, productos p 
+where v.producto_id_fk = p.producto_id_pk 
+group by p.nombre order by Total desc; 
+
+3.- REPORTE DE VENTAS NOMBRE DE CAJERO NOMBRE DE PRODUCTO Y PISO
+
+select COUNT(*) as Total, p.nombre, mr.piso, c.nomapels 
+from  	maquinas_registradoras mr ,
+		cajeros c, 
+		ventas v, 
+		productos p 
+where v.producto_id_fk = p.producto_id_pk and 
+	  v.cajero_id_fk  = c.cajero_id_pk  and
+	  v.maquina_registradora_id_fk  = mr.maquina_registradora_id_pk 
+group by p.nombre, mr.piso, c.nomapels order by Total desc; 
+
+
+4. VENTAS TOTALES REALIZADAS EN CADA PISO
+
+select SUM(p.precio) as Total, mr.piso
+from  	maquinas_registradoras mr ,
+		ventas v, 
+		productos p 
+where v.producto_id_fk = p.producto_id_pk and 
+	  v.maquina_registradora_id_fk  = mr.maquina_registradora_id_pk 
+group by  mr.piso
+order by total asc; 
+
+
+5. IMPORTE DE VENTAS POR CAJERO
+
+select SUM(p.precio) as Total, c.nomapels 
+from  	cajeros c ,
+		ventas v, 
+		productos p 
+where v.producto_id_fk = p.producto_id_pk and 
+	  v.cajero_id_fk  = c.cajero_id_pk 
+group by c.nomapels 
+order by total asc; 
+
+

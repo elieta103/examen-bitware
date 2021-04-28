@@ -1,0 +1,57 @@
+package com.elhg.bitware.spring.data.mongodb.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.elhg.bitware.spring.data.mongodb.dto.ClienteDTO;
+import com.elhg.bitware.spring.data.mongodb.model.Cliente;
+import com.elhg.bitware.spring.data.mongodb.service.ClienteService;
+
+@CrossOrigin(origins = "*")
+@RestController
+@RequestMapping("/NutriNET")
+public class ClienteController {
+
+	@Autowired
+	ClienteService clienteService;
+
+	@GetMapping("/Cliente")
+	public ResponseEntity<ClienteDTO> getAllClientes() {
+		return new ResponseEntity<>(clienteService.getAllClientes(), HttpStatus.OK);
+	}
+
+	@GetMapping("/Cliente/{id}")
+	public ResponseEntity<ClienteDTO> getClienteById(@PathVariable("id") Integer id) {
+		return new ResponseEntity<>(clienteService.getClienteById(id), HttpStatus.OK);
+	}
+
+	@PostMapping("/Cliente")
+	public ResponseEntity<ClienteDTO> createCliente(@RequestBody Cliente cliente) {
+		return new ResponseEntity<>(clienteService.createCliente(cliente), HttpStatus.OK);
+	}
+
+	@PutMapping("/Cliente/{id}")
+	public ResponseEntity<ClienteDTO> updateCliente(@PathVariable("id") Integer id, @RequestBody Cliente cliente) {
+		return new ResponseEntity<>(clienteService.updateCliente(id, cliente), HttpStatus.OK);
+	}
+
+	@DeleteMapping("/Cliente/{id}")
+	public ResponseEntity<ClienteDTO> deleteTutorial(@PathVariable("id") Integer id) {
+		return new ResponseEntity<>(clienteService.deleteTutorial(id), HttpStatus.OK);
+	}
+
+}

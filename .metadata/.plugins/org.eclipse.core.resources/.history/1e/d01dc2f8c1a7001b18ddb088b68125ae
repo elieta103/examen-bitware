@@ -1,0 +1,11 @@
+package com.elhg.bitware.spring.data.mongodb.repository;
+
+import java.util.List;
+
+import org.springframework.data.mongodb.repository.MongoRepository;
+
+import com.elhg.bitware.spring.data.mongodb.model.Cliente;
+
+public interface TutorialRepository extends MongoRepository<Cliente, Integer> {
+  List<Cliente> findByClienteId(Integer clienteId);
+}

@@ -1,0 +1,5 @@
+package com.elhg.bitware.spring.data.mongodb.dto;
+
+public class ClienteDTO {
+
+}

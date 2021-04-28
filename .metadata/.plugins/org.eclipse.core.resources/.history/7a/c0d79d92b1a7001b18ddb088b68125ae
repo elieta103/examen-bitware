@@ -1,0 +1,87 @@
+package com.bitware.elhg.model;
+
+public class Persona {
+	private String nombre;
+	private Integer edad;
+	private String nss;
+	private Sexo sexo;
+	private Double peso;
+	private Double altura;
+	
+	
+	
+	public Persona(String nombre, Integer edad, String nss, Sexo sexo, Double peso, Double altura) {
+		super();
+		this.nombre = nombre;
+		this.edad = edad;
+		this.nss = nss;
+		this.sexo = sexo;
+		this.peso = peso;
+		this.altura = altura;
+	}
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public Integer getEdad() {
+		return edad;
+	}
+	public void setEdad(Integer edad) {
+		this.edad = edad;
+	}
+	public String getNss() {
+		return nss;
+	}
+	public void setNss(String nss) {
+		this.nss = nss;
+	}
+	public Sexo getSexo() {
+		return sexo;
+	}
+	public void setSexo(Sexo sexo) {
+		this.sexo = sexo;
+	}
+	public Double getPeso() {
+		return peso;
+	}
+	public void setPeso(Double peso) {
+		this.peso = peso;
+	}
+	public Double getAltura() {
+		return altura;
+	}
+	public void setAltura(Double altura) {
+		this.altura = altura;
+	}
+	
+
+	public double calcularIMC(){
+		double imc = 0;
+		int 
+		imc = getPeso() / Math.pow(getAltura(), 2);
+			if(getSexo().toString().equals(Sexo.MASCULINO)) {
+				if(imc <20)
+			}else {
+				
+			}
+			
+				
+		return
+		
+	}
+
+	public boolean esMayorDeEdad() {
+		boolean mayorEdad;
+		mayorEdad = (getEdad()>=18) ? true: false;
+		return mayorEdad;
+	}
+	
+	public boolean comprobarSexo(char sexo) {	
+			if(sexo == 'H' || sexo == 'F') {
+				return true;
+			}
+		return false;
+	}
+}

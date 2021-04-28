@@ -1,0 +1,199 @@
+package com.elhg.bitware.spring.data.mongodb.model;
+
+import java.sql.Date;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "clientes")
+public class Cliente {
+  @Id
+  private Integer clienteId;
+
+  private String nombreUsuario;
+  private String contrasenia;
+  private String nombre;
+  private String apellidos;
+  private String correoElectronico;
+  private Integer edad;
+  private Double estatura;
+  private Double peso;
+  private Double imc;
+  private Double geb;
+  private Double eta;
+  private Date fechaCreacion;
+  private Date fechaActualizacion;
+  
+
+  
+  
+  
+  
+  public Cliente() {
+  }
+
+public Cliente(Integer clienteId, String nombreUsuario, String contrasenia, String nombre, String apellidos,
+		String correoElectronico, Integer edad, Double estatura, Double peso, Double imc, Double geb, Double eta,
+		Date fechaCreacion, Date fechaActualizacion) {
+	super();
+	this.clienteId = clienteId;
+	this.nombreUsuario = nombreUsuario;
+	this.contrasenia = contrasenia;
+	this.nombre = nombre;
+	this.apellidos = apellidos;
+	this.correoElectronico = correoElectronico;
+	this.edad = edad;
+	this.estatura = estatura;
+	this.peso = peso;
+	this.imc = imc;
+	this.geb = geb;
+	this.eta = eta;
+	this.fechaCreacion = fechaCreacion;
+	this.fechaActualizacion = fechaActualizacion;
+}
+
+
+
+
+
+public Integer getClienteID() {
+	return clienteID;
+}
+
+
+public void setClienteID(Integer clienteID) {
+	this.clienteID = clienteID;
+}
+
+
+public String getNombreUsuario() {
+	return nombreUsuario;
+}
+
+
+public void setNombreUsuario(String nombreUsuario) {
+	this.nombreUsuario = nombreUsuario;
+}
+
+
+public String getContrasenia() {
+	return contrasenia;
+}
+
+
+public void setContrasenia(String contrasenia) {
+	this.contrasenia = contrasenia;
+}
+
+
+public String getNombre() {
+	return nombre;
+}
+
+
+public void setNombre(String nombre) {
+	this.nombre = nombre;
+}
+
+
+public String getApellidos() {
+	return apellidos;
+}
+
+
+public void setApellidos(String apellidos) {
+	this.apellidos = apellidos;
+}
+
+
+public String getCorreoElectronico() {
+	return correoElectronico;
+}
+
+
+public void setCorreoElectronico(String correoElectronico) {
+	this.correoElectronico = correoElectronico;
+}
+
+
+public Integer getEdad() {
+	return edad;
+}
+
+
+public void setEdad(Integer edad) {
+	this.edad = edad;
+}
+
+
+public Double getEstatura() {
+	return estatura;
+}
+
+
+public void setEstatura(Double estatura) {
+	this.estatura = estatura;
+}
+
+
+public Double getPeso() {
+	return peso;
+}
+
+
+public void setPeso(Double peso) {
+	this.peso = peso;
+}
+
+
+public Double getImc() {
+	return imc;
+}
+
+
+public void setImc(Double imc) {
+	this.imc = imc;
+}
+
+
+public Double getGeb() {
+	return geb;
+}
+
+
+public void setGeb(Double geb) {
+	this.geb = geb;
+}
+
+
+public Double getEta() {
+	return eta;
+}
+
+
+public void setEta(Double eta) {
+	this.eta = eta;
+}
+
+
+public Date getFechaCreacion() {
+	return fechaCreacion;
+}
+
+
+public void setFechaCreacion(Date fechaCreacion) {
+	this.fechaCreacion = fechaCreacion;
+}
+
+
+public Date getFechaActualizacion() {
+	return fechaActualizacion;
+}
+
+
+public void setFechaActualizacion(Date fechaActualizacion) {
+	this.fechaActualizacion = fechaActualizacion;
+}
+
+ 
+}

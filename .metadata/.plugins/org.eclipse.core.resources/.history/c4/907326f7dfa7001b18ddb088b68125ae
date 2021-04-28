@@ -1,0 +1,38 @@
+package com.elhg.bitware.spring.data.mongodb.service;
+
+import com.elhg.bitware.spring.data.mongodb.dto.ClienteDTO;
+import com.elhg.bitware.spring.data.mongodb.model.Cliente;
+
+public class ClienteServiceImpl implements ClienteService {
+
+	@Override
+	public ClienteDTO getAllClientes() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ClienteDTO getClienteById(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ClienteDTO createCliente(Cliente cliente) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ClienteDTO updateCliente(Integer id, Cliente cliente) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ClienteDTO deleteTutorial(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

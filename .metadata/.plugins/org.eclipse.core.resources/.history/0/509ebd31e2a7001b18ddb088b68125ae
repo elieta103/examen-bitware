@@ -1,0 +1,120 @@
+package com.elhg.bitware.spring.data.mongodb.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
+
+import com.elhg.bitware.spring.data.mongodb.dto.ClienteDTO;
+import com.elhg.bitware.spring.data.mongodb.model.Cliente;
+import com.elhg.bitware.spring.data.mongodb.repository.ClienteRepository;
+
+
+@Service
+public class ClienteServiceImpl implements ClienteService {
+	
+	@Autowired
+	ClienteRepository clienteRepository;
+
+	@Override
+	public ClienteDTO getAllClientes() {
+		  ClienteDTO clienteDTO = new ClienteDTO();
+		    try {
+		      List<Cliente> listClientes = new ArrayList<Cliente>();
+		      listClientes = clienteRepository.findAll();
+		
+			      if (listClientes.isEmpty()) {
+				      clienteDTO.setCveError(0);
+				      clienteDTO.setCveMensaje("No se encontraron registros!");
+				      clienteDTO.setClientes(listClientes);
+			      }else {
+				      clienteDTO.setCveError(0);
+				      clienteDTO.setCveMensaje("Registros encontrados !");
+				      clienteDTO.setClientes(listClientes);		
+			      }
+		    } catch (Exception e) {
+			  clienteDTO.setCveError(-1);
+			  clienteDTO.setCveMensaje("Error al obtener listados de cliente: "+e.getMessage() );
+			  clienteDTO.setClientes(new ArrayList<Cliente>());
+		    }
+		return clienteDTO;
+	}
+
+	@Override
+	public ClienteDTO getClienteById(Integer id) {
+	    ClienteDTO clienteDTO = new ClienteDTO();
+	    	try {
+	    		Optional<Cliente> cliente = clienteRepository.findByClienteId(id);
+				    if (cliente.isPresent()) {
+				    	clienteDTO.setCveError(0);
+					    clienteDTO.setCveMensaje("Registro encontrado !");
+					    List<Cliente> clientes = new ArrayList<Cliente>();
+					    clientes.add(cliente.get());
+					    clienteDTO.setClientes(clientes);
+				    } else {
+				    	clienteDTO.setCveError(0);
+					    clienteDTO.setCveMensaje("No se encontraron registros!");
+					    clienteDTO.setClientes(new ArrayList<Cliente>());
+				    }
+	    	}catch (Exception e) {
+			      clienteDTO.setCveError(-1);
+			      clienteDTO.setCveMensaje("Error al consultar cliente: "+e.getMessage() );
+			      clienteDTO.setClientes(new ArrayList<Cliente>());
+		    }
+	    return clienteDTO;
+	}
+
+	@Override
+	public ClienteDTO createCliente(Cliente cliente) {
+		  ClienteDTO clienteDTO = new ClienteDTO();
+				  try {
+					  
+					  Optional<Cliente> clienteCorreo = clienteRepository.findByCorreoElectronico(cliente.getCorreoElectronico());
+					  Optional<Cliente> clienteNomUser = clienteRepository.findByNombreUsuario(cliente.getNombreUsuario());
+					  
+					  	if(!clienteCorreo.isPresent()) {
+					  		if(!clienteNomUser.isPresent()) {
+							      Cliente _cliente = clienteRepository.save(cliente);
+							      List<Cliente> clientes = new ArrayList<Cliente>();
+							      clientes.add(_cliente);
+							      
+							      clienteDTO.setCveError(0);
+							      clienteDTO.setCveMensaje("Cliente guardado con exito !");
+							      clienteDTO.setClientes(clientes);
+					  			
+					  		}else {
+							      clienteDTO.setCveError(0);
+							      clienteDTO.setCveMensaje("Ya existe un cliente con ese nombre de usuario !");
+							      clienteDTO.setClientes(new ArrayList<Cliente>());  
+					  		}
+					  	}else {
+						      clienteDTO.setCveError(0);
+						      clienteDTO.setCveMensaje("Ya existe un cliente con ese correo electrónico !");
+						      clienteDTO.setClientes(new ArrayList<Cliente>());  
+					  	}
+					  				  	
+			    }catch (Exception e) {
+				      clienteDTO.setCveError(-1);
+				      clienteDTO.setCveMensaje("Error al guardar cliente: "+e.getMessage() );
+				      clienteDTO.setClientes(new ArrayList<Cliente>());
+			    }
+		return clienteDTO;
+	}
+
+	@Override
+	public ClienteDTO updateCliente(Integer id, Cliente cliente) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public ClienteDTO deleteTutorial(Integer id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

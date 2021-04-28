@@ -1,0 +1,5 @@
+package com.bitware.elhg.model;
+
+public enum Sexo {
+
+}

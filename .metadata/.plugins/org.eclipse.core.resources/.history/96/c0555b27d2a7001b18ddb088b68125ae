@@ -1,0 +1,32 @@
+package com.elhg.bitware.spring.data.mongodb.dto;
+
+public class ClienteDTO {
+	private Integer cveError;
+	private String cveMensaje;
+	
+	
+	public ClienteDTO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public ClienteDTO(Integer cveError, String cveMensaje) {
+		super();
+		this.cveError = cveError;
+		this.cveMensaje = cveMensaje;
+	}
+	public Integer getCveError() {
+		return cveError;
+	}
+	public void setCveError(Integer cveError) {
+		this.cveError = cveError;
+	}
+	public String getCveMensaje() {
+		return cveMensaje;
+	}
+	public void setCveMensaje(String cveMensaje) {
+		this.cveMensaje = cveMensaje;
+	}
+
+	
+	
+}

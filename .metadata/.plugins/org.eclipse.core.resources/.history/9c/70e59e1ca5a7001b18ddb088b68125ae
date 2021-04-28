@@ -1,0 +1,10 @@
+package com.bitware.elhg;
+
+public class Inicio {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Formulario f = new Formulario();
+	}
+
+}

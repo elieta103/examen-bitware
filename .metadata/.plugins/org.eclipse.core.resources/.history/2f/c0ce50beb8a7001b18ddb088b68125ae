@@ -1,0 +1,218 @@
+package com.bitware.elhg.gui;
+
+import javax.swing.JTextField;
+
+import com.bitware.elhg.model.Persona;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+  
+public class Formulario  extends JFrame implements ActionListener {
+  
+  
+	private static final long serialVersionUID = 1L;
+	
+	// Componentes de la Forma
+    private Container container;
+    private JLabel lblTitulo;
+    private JLabel lblNombre;
+    private JTextField txtNombre;
+    private JLabel lblEdad;
+    private JTextField txtEdad;
+    private JLabel lblSexo;
+    private JRadioButton rdMasculino;
+    private JRadioButton rdFemenino;
+    private ButtonGroup btnGrpSexo;
+    private JLabel lblPeso;
+    private JTextField txtPeso;
+    private JLabel lblAltura;
+    private JTextField txtAltura;
+    
+    
+    private JTextArea tadd;
+    private JButton sub;
+    private JButton reset;
+    private JTextArea tout;
+    private JLabel res;
+    private JTextArea resadd;
+  
+  
+    // Constructor
+    public Formulario()
+    {
+        setTitle("Registro");
+        setBounds(300, 90, 900, 600);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setResizable(false);
+  
+        container = getContentPane();
+        container.setLayout(null);
+  
+        lblTitulo = new JLabel("Formulario de registro");
+        lblTitulo.setFont(new Font("Arial", Font.PLAIN, 30));
+        lblTitulo.setSize(300, 30);
+        lblTitulo.setLocation(300, 30);
+        container.add(lblTitulo);
+  
+        lblNombre = new JLabel("Nombre : ");
+        lblNombre.setFont(new Font("Arial", Font.PLAIN, 20));
+        lblNombre.setSize(100, 20);
+        lblNombre.setLocation(100, 100);
+        container.add(lblNombre);
+  
+        txtNombre = new JTextField();
+        txtNombre.setFont(new Font("Arial", Font.PLAIN, 15));
+        txtNombre.setSize(190, 20);
+        txtNombre.setLocation(200, 100);
+        container.add(txtNombre);
+  
+        lblEdad = new JLabel("Edad : ");
+        lblEdad.setFont(new Font("Arial", Font.PLAIN, 20));
+        lblEdad.setSize(100, 20);
+        lblEdad.setLocation(100, 150);
+        container.add(lblEdad);
+  
+        txtEdad = new JTextField();
+        txtEdad.setFont(new Font("Arial", Font.PLAIN, 15));
+        txtEdad.setSize(150, 20);
+        txtEdad.setLocation(200, 150);
+        container.add(txtEdad);
+          
+        lblSexo = new JLabel("Sexo");
+        lblSexo.setFont(new Font("Arial", Font.PLAIN, 20));
+        lblSexo.setSize(100, 20);
+        lblSexo.setLocation(100, 250);
+        container.add(lblSexo);
+  
+        rdMasculino = new JRadioButton("Masculino");
+        rdMasculino.setFont(new Font("Arial", Font.PLAIN, 15));
+        rdMasculino.setSelected(true);
+        rdMasculino.setSize(100, 20);
+        rdMasculino.setLocation(200, 250);
+        container.add(rdMasculino);
+  
+        rdFemenino = new JRadioButton("Femenino");
+        rdFemenino.setFont(new Font("Arial", Font.PLAIN, 15));
+        rdFemenino.setSelected(false);
+        rdFemenino.setSize(100, 20);
+        rdFemenino.setLocation(300, 250);
+        container.add(rdFemenino);
+  
+        btnGrpSexo = new ButtonGroup();
+        btnGrpSexo.add(rdMasculino);
+        btnGrpSexo.add(rdFemenino);
+
+        
+        lblPeso = new JLabel("Peso(Kg): ");
+        lblPeso.setFont(new Font("Arial", Font.PLAIN, 18));
+        lblPeso.setSize(100, 20);
+        lblPeso.setLocation(100, 300);
+        container.add(lblPeso);
+  
+        txtPeso = new JTextField();
+        txtPeso.setFont(new Font("Arial", Font.PLAIN, 15));
+        txtPeso.setSize(150, 20);
+        txtPeso.setLocation(200, 300);
+        container.add(txtPeso);
+        
+        lblAltura = new JLabel("Altura(mt): ");
+        lblAltura.setFont(new Font("Arial", Font.PLAIN, 18));
+        lblAltura.setSize(100, 20);
+        lblAltura.setLocation(100, 350);
+        container.add(lblAltura);
+  
+        txtAltura = new JTextField();
+        txtAltura.setFont(new Font("Arial", Font.PLAIN, 15));
+        txtAltura.setSize(150, 20);
+        txtAltura.setLocation(200, 350);
+        container.add(txtAltura);
+        
+        
+        sub = new JButton("Submit");
+        sub.setFont(new Font("Arial", Font.PLAIN, 15));
+        sub.setSize(100, 20);
+        sub.setLocation(150, 450);
+        sub.addActionListener(this);
+        container.add(sub);
+  
+        reset = new JButton("Reset");
+        reset.setFont(new Font("Arial", Font.PLAIN, 15));
+        reset.setSize(100, 20);
+        reset.setLocation(270, 450);
+        reset.addActionListener(this);
+        container.add(reset);
+  
+        tout = new JTextArea();
+        tout.setFont(new Font("Arial", Font.PLAIN, 15));
+        tout.setSize(300, 400);
+        tout.setLocation(500, 100);
+        tout.setLineWrap(true);
+        tout.setEditable(false);
+        container.add(tout);
+  
+        res = new JLabel("");
+        res.setFont(new Font("Arial", Font.PLAIN, 20));
+        res.setSize(500, 25);
+        res.setLocation(100, 500);
+        container.add(res);
+  
+        resadd = new JTextArea();
+        resadd.setFont(new Font("Arial", Font.PLAIN, 15));
+        resadd.setSize(200, 75);
+        resadd.setLocation(580, 175);
+        resadd.setLineWrap(true);
+        container.add(resadd);
+  
+        setVisible(true);
+    }
+  
+    // method actionPerformed()
+    // to get the action performed
+    // by the user and act accordingly
+    public void actionPerformed(ActionEvent e)
+    {
+        if (e.getSource() == sub) {
+        	Persona persona = new Persona();
+        	persona.setNombre(txtNombre.getText());
+        	persona.setEdad(new Integer(txtEdad.getText()).intValue());
+        	persona.setNss(txtNss.getText());
+        		if (rdMasculino.isSelected()) {
+        			persona.setSexo('M');
+        		}
+        		if(rdFemenino.isSelected()) {
+        			persona.setSexo('F');
+        		}
+        	persona.setPeso(new Double(txtPeso.getText()).doubleValue());		
+        	persona.setAltura(new Double(txtAltura.getText()).doubleValue());
+        	
+            String edad = (persona.esMayorDeEdad())? " Es Mayor de edad \n" : " Es Menor de edad \n";
+            int peso =persona.calcularIMC();
+            String msgPeso = "";
+                	if(peso == -1) {
+                		msgPeso = "Tiene falta de peso";
+                	}else if(peso == 0) {
+                		msgPeso = "Esta en su peso ideal";
+                	}else {
+                		msgPeso = "Tiene sobrepeso";
+                	}
+                	
+                tout.setText(persona.toString()+edad+msgPeso);
+                tout.setEditable(false);
+                res.setText("Registro Exitoso.");
+        }
+  
+        else if (e.getSource() == reset) {
+            String def = "";
+            txtNombre.setText(def);
+            txtAltura.setText(def);
+            txtEdad.setText(def);
+            txtNss.setText(def);
+            txtPeso.setText(def);
+            tadd.setText(def);
+            res.setText(def);
+            tout.setText(def);
+            resadd.setText(def);
+        }
+    }
+}
